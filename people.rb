@@ -15,7 +15,7 @@ end
 class Student < Person
 
   def learn
-    puts "I get it!"
+    "I get it!"
   end
 
 end
@@ -23,7 +23,7 @@ end
 class Instructor < Person
 
   def teach
-    puts "Everything in Ruby is an object."
+    "Everything in Ruby is an object."
   end
 
 end
@@ -33,3 +33,5 @@ cr = Student.new("Christina")
 
 puts ch.greeting
 puts cr.greeting
+puts ch.teach
+puts cr.learn
