@@ -35,3 +35,6 @@ puts ch.greeting
 puts cr.greeting
 puts ch.teach
 puts cr.learn
+
+puts cr.teach
+#This doesn't work because the teach method is inherited from the Instructor class, and not avilable to the Student class, which cr is an instance of.
