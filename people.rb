@@ -7,12 +7,12 @@ class Person
   end
 
   def greeting
-    "Hi, my name is #{ @name }"
+    "Hi, my name is #{ @name }."
   end
 
 end
 
-class Student
+class Student < Person
 
   def learn
     puts "I get it!"
@@ -20,7 +20,7 @@ class Student
 
 end
 
-class Instructor
+class Instructor < Person
 
   def teach
     puts "Everything in Ruby is an object."
@@ -28,6 +28,8 @@ class Instructor
 
 end
 
-p = Person.new('Fred')
+ch = Instructor.new("Chris")
+cr = Student.new("Christina")
 
-puts p.greeting
+puts ch.greeting
+puts cr.greeting
