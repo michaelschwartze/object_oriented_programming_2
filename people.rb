@@ -1,8 +1,12 @@
-class Student
+class Person
 
-  def initialize
-
+  def initialize(name)
+    @name = name
   end
+
+end
+
+class Student
 
   def learn
     puts "I get it!"
@@ -11,10 +15,6 @@ class Student
 end
 
 class Instructor
-
-  def initialize
-
-  end
 
   def teach
     puts "Everything in Ruby is an object."
