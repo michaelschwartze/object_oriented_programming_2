@@ -1,7 +1,13 @@
 class Person
 
+  attr_reader :name
+
   def initialize(name)
     @name = name
+  end
+
+  def greeting
+    "Hi, my name is #{ @name }"
   end
 
 end
@@ -21,3 +27,7 @@ class Instructor
   end
 
 end
+
+p = Person.new('Fred')
+
+puts p.greeting
