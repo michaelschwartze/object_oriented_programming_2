@@ -5,21 +5,24 @@ class Item
 
   def initialize(description, price, imported=false, tax_exempt=false)
     @description = description
-    @price = price.round(2)
+    @price = price
     @imported   = imported
     @tax_exempt = tax_exempt
+    @import_duty = import_duty
+    @item_tax = item_tax
   end
 
   def import_duty
-    @imported == true ? (@price * 0.05).round(2) : 0
+    @imported == true ? (@price * 0.05) : 0
   end
 
   def item_tax
-    @tax_exempt == true ? 0 : (@price * 0.10).round(2)
+    @tax_exempt == true ? 0 : (@price * 0.10)
   end
 
   def item_price
-    @price + import_duty + item_tax
+    item_total = @price + import_duty + item_tax
+    return item_total.round(2)
   end
 
   def item_details
