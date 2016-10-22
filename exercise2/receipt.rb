@@ -10,17 +10,26 @@ class Receipt
   end
 
   def add_item(qty, item)
-    @items.push([qty, item])
+    @items.push([qty,
+      item.description,
+      item.price,
+      item.item_price,
+      item.item_tax
+      ])
   end
 
-  def print_items
-    @items.each do |qty, item|
-      puts "#{qty} #{item.item_details}"
+  def print_items #WORKS
+    @items.each do |(qty, description, price, item_price, item_tax)|
+      puts "#{qty} #{description} at #{qty * item_price}"
     end
   end
 
-  def print_tax
-    puts 'Sales Taxes: '
+  def print_tax #DOESN'T WORK 
+    tax_sum = 0
+    @items.each do |(qty, description, price, item_price, item_tax)|
+      tax_sum += item_tax
+    end
+    puts "Sales Taxes: #{tax_sum}"
   end
 
   def print_total
