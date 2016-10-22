@@ -1,9 +1,8 @@
 class Item
-
   attr_reader :description, :price
   attr_accessor :imported, :tax_exempt
 
-  def initialize(description, price, imported=false, tax_exempt=false)
+  def initialize(description, price, imported = false, tax_exempt = false)
     @description = description
     @price = price
     @imported   = imported
@@ -22,27 +21,10 @@ class Item
 
   def item_price
     item_total = @price + import_duty + item_tax
-    return item_total.round(2)
+    item_total.round(2)
   end
 
   def item_details
-    "#{ @description } at #{ item_price }"
+    "#{@description} at #{item_price}"
   end
-
 end
-
-
-# Example 3:
-# 1 imported bottle of perfume at 27.99
-# 1 bottle of perfume at 18.99
-# 1 packet of headache pills at 9.75
-# 1 box of imported chocolates at 11.25
-#
-#
-# Output:
-# 1 imported bottle of perfume: 32.19
-# 1 bottle of perfume: 20.89
-# 1 packet of headache pills: 9.75
-# 1 imported box of chocolates: 11.85
-# Sales Taxes: 6.70
-# Total: 74.68
