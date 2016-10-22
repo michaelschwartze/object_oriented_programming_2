@@ -1,3 +1,4 @@
+# Item Class
 class Item
   attr_reader :description, :price
   attr_accessor :imported, :tax_exempt
@@ -28,3 +29,5 @@ class Item
     "#{@description} at #{item_price}"
   end
 end
+
+# Books, food and medical products are tax exempt
