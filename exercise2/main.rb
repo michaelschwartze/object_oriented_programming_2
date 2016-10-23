@@ -6,24 +6,14 @@ item2 = Item.new('bottle of perfume', 18.99)
 item3 = Item.new('packet of headache pills', 9.75, false, true)
 item4 = Item.new('box of imported chocolates', 11.25, true, true)
 
-# Create new receipt r1 and add item1
-r1 = Receipt.new(1, item1)
+r1 = Receipt.new
+r1.add_item(1, item1)
+r1.add_item(1, item2)
+r1.add_item(1, item3)
+r1.add_item(1, item4)
 
-# Put remaining items in array
-myarray = [[1, item2], [1, item3], [1, item4]]
+r1.print_receipt
 
-# Put items in array into the receipt
-myarray.each do |qty, item|
-  r1.add_item(qty, item)
-end
-
-r1.print_items
-r1.print_tax
-
-# Create receipt output
-# r1.create_receipt
-
-# r1.sum_price
 
 # Example 3:
 # 1 imported bottle of perfume at 27.99
