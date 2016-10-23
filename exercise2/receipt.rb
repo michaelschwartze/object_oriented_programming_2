@@ -2,43 +2,45 @@ require_relative 'item'
 
 # Receipt class
 class Receipt
-  attr_reader :items
+  attr_accessor :items
+  attr_accessor :tax
+  attr_accessor :display_items
+  attr_accessor :total
 
-  def initialize(qty, item)
+  def initialize
     @items = []
-    add_item(qty, item)
+    @tax = []
+    @total = []
   end
 
   def add_item(qty, item)
     @items.push([qty,
       item.description,
       item.price,
-      item.item_price,
-      item.item_tax
+      item.total_price
       ])
+    @tax.push(item.total_tax)
+    @total.push(item.total_price)
   end
 
-  def print_items #WORKS
-    @items.each do |(qty, description, price, item_price, item_tax)|
-      puts "#{qty} #{description} at #{qty * item_price}"
+  def display_items
+    @items.each do |(qty, description, price, total_price)|
+      puts "#{qty} #{description}: #{total_price}"
     end
   end
 
-  def print_tax #DOESN'T WORK 
-    tax_sum = 0
-    @items.each do |(qty, description, price, item_price, item_tax)|
-      tax_sum += item_tax
-    end
-    puts "Sales Taxes: #{tax_sum}"
+  def display_tax_line
+    "Sales Taxes: #{@tax.inject{ |sum,x| sum + x }}"
   end
 
-  def print_total
-    puts 'Total: '
+  def display_total_line
+    "Total: #{@total.inject{ |sum,x| sum + x }}"
   end
 
-  def create_receipt
-    print_items
-    print_tax
-    print_total
+  def print_receipt
+    display_items
+    puts display_tax_line
+    puts display_total_line
   end
+
 end
