@@ -16,11 +16,11 @@ class Receipt
   def add_item(qty, item)
     @items.push([qty,
       item.description,
-      item.price,
-      item.total_price
+      item.price.round(2),
+      item.total_price.round(2)
       ])
-    @tax.push(item.total_tax)
-    @total.push(item.total_price)
+    @tax.push(item.total_tax.round(2))
+    @total.push(item.total_price.round(2))
   end
 
   def display_items
